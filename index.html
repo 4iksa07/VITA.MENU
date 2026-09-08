@@ -2,38 +2,172 @@
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <title>VITA — кафе здорового питания</title>
 <style>
 :root{
-  --bg:#f5f7f1; --card:#fff; --text:#26342b; --muted:#718078;
-  --accent:#718b68; --accent2:#dce8d5; --line:#e3e8df; --dark:#314338;
+  --bg:#f3f6ef;
+  --card:#ffffff;
+  --text:#26342b;
+  --muted:#718078;
+  --accent:#718b68;
+  --line:#e1e7de;
+  --dark:#314338;
 }
-*{box-sizing:border-box} body{margin:0;font-family:Inter,Arial,sans-serif;background:var(--bg);color:var(--text)}
-button{font:inherit;cursor:pointer;border:0}.hero{min-height:430px;padding:28px 6%;display:flex;align-items:center;
-background:linear-gradient(110deg,rgba(38,52,43,.9),rgba(70,91,72,.62)),linear-gradient(135deg,#aabca1,#e6eadf);color:white}
-.nav{position:absolute;top:22px;left:6%;right:6%;display:flex;justify-content:space-between;align-items:center}
-.logo{font-size:25px;font-weight:800;letter-spacing:3px}.nav a{color:white;text-decoration:none;margin-left:25px;font-size:14px}
-.hero-content{max-width:720px;margin-top:45px}.eyebrow{text-transform:uppercase;letter-spacing:3px;font-size:12px;opacity:.8}
-h1{font-size:clamp(42px,7vw,72px);line-height:.98;margin:16px 0}.hero p{font-size:18px;line-height:1.6;max-width:600px;color:#eef3ec}
-.hero-btn{background:white;color:var(--dark);padding:14px 22px;border-radius:12px;font-weight:700}
-.container{width:min(1180px,90%);margin:auto}.section{padding:58px 0}.section-head{display:flex;justify-content:space-between;gap:20px;align-items:end;margin-bottom:25px}
-h2{font-size:34px;margin:0 0 8px}.subtitle{color:var(--muted);margin:0;line-height:1.5}
-.tabs{display:flex;flex-wrap:wrap;gap:9px;margin:25px 0}.tab{padding:11px 17px;border-radius:999px;background:white;border:1px solid var(--line);color:var(--text)}
-.tab.active{background:var(--dark);color:white;border-color:var(--dark)}
-.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.card{background:var(--card);border:1px solid var(--line);border-radius:20px;overflow:hidden;box-shadow:0 8px 25px rgba(40,55,44,.05)}
-.photo{height:170px;background:linear-gradient(135deg,#d9e5d1,#9caf94);display:flex;align-items:center;justify-content:center;font-size:55px}
-.card-body{padding:18px}.card h3{margin:0 0 9px;font-size:19px}.desc{font-size:13px;color:var(--muted);min-height:39px;line-height:1.45}.kbju{display:flex;gap:7px;flex-wrap:wrap;margin:13px 0}.tag{background:#f0f4ed;border-radius:8px;padding:6px 8px;font-size:11px}.price-row{display:flex;justify-content:space-between;align-items:center;margin-top:12px}.price{font-weight:800}.add{background:var(--accent);color:white;padding:9px 13px;border-radius:10px}.about{display:grid;grid-template-columns:1fr 1fr;gap:25px}.info{background:white;border:1px solid var(--line);border-radius:22px;padding:28px}.info h3{margin-top:0}.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}.step{background:white;padding:22px;border-radius:18px;border:1px solid var(--line)}.num{font-size:28px;font-weight:800;color:var(--accent)}
-footer{padding:35px 0;background:var(--dark);color:white}.footer{display:flex;justify-content:space-between;gap:20px}.muted-white{opacity:.75}
-.cart{position:fixed;right:22px;bottom:22px;background:var(--dark);color:white;border-radius:18px;padding:14px 18px;box-shadow:0 10px 30px rgba(0,0,0,.2);display:none}
-.modal-bg{position:fixed;inset:0;background:rgba(20,30,24,.55);display:none;align-items:center;justify-content:center;padding:20px}.modal{background:white;border-radius:22px;padding:26px;width:min(520px,100%);max-height:85vh;overflow:auto}.close{float:right;background:#eef1ec;border-radius:8px;padding:6px 10px}.cart-item{display:flex;justify-content:space-between;padding:12px 0;border-bottom:1px solid var(--line)}
-@media(max-width:850px){.grid{grid-template-columns:repeat(2,1fr)}.about,.steps{grid-template-columns:1fr}.nav a{display:none}}
-@media(max-width:560px){.grid{grid-template-columns:1fr}.hero{min-height:500px}.section{padding:42px 0}.section-head{display:block}.tabs{overflow:auto;flex-wrap:nowrap}.tab{white-space:nowrap}}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
+  background:#dfe7dc;
+  color:var(--text);
+}
+button{font:inherit;cursor:pointer;border:0}
+.hero{
+  width:100%;
+  min-height:390px;
+  padding:28px 20px 30px;
+  display:flex;
+  align-items:flex-end;
+  position:relative;
+  overflow:hidden;
+  background:
+    linear-gradient(180deg,rgba(38,52,43,.20),rgba(38,52,43,.78)),
+    linear-gradient(135deg,#afbea8,#e6ebe2);
+  color:#fff;
+}
+.nav{
+  position:absolute;
+  top:18px;
+  left:18px;
+  right:18px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  z-index:2;
+}
+.logo{font-size:24px;font-weight:800;letter-spacing:3px}
+.nav a{display:none}
+.hero-content{width:100%;position:relative;z-index:2}
+.eyebrow{text-transform:uppercase;letter-spacing:2px;font-size:10px;opacity:.85}
+h1{font-family:Georgia,serif;font-size:42px;line-height:.98;margin:12px 0}
+.hero p{font-size:14px;line-height:1.5;margin:0 0 16px;color:#f0f4ee}
+.hero-btn{
+  background:#fff;color:var(--dark);
+  padding:13px 18px;border-radius:13px;
+  font-weight:700;font-size:14px;
+}
+.container{width:100%;margin:0}
+.section{padding:30px 16px 0}
+.section-head{display:block;margin-bottom:16px}
+h2{font-family:Georgia,serif;font-size:31px;margin:0 0 7px}
+.subtitle{color:var(--muted);margin:0;line-height:1.5;font-size:13px}
+.tabs{
+  display:flex;gap:8px;margin:17px 0;
+  overflow-x:auto;flex-wrap:nowrap;
+  scrollbar-width:none;padding-bottom:3px;
+}
+.tabs::-webkit-scrollbar{display:none}
+.tab{
+  flex:0 0 auto;
+  padding:10px 14px;border-radius:999px;
+  background:#fff;border:1px solid var(--line);
+  color:var(--text);font-size:13px;white-space:nowrap;
+}
+.tab.active{background:var(--dark);color:#fff;border-color:var(--dark)}
+.grid{display:flex;flex-direction:column;gap:15px}
+.card{
+  width:100%;
+  background:var(--card);
+  border:1px solid var(--line);
+  border-radius:20px;
+  overflow:hidden;
+  box-shadow:0 7px 22px rgba(40,55,44,.06);
+}
+.photo{
+  height:210px;
+  background-size:cover !important;
+  background-position:center !important;
+  background-color:#dfe8da;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:52px;
+}
+.card-body{padding:16px}
+.card h3{
+  margin:0 0 8px;
+  font-family:Georgia,serif;
+  font-size:20px;
+  line-height:1.18;
+}
+.desc{
+  font-size:13px;
+  color:var(--muted);
+  min-height:38px;
+  line-height:1.45;
+}
+.kbju{display:flex;gap:6px;flex-wrap:wrap;margin:12px 0}
+.tag{
+  background:#f0f4ed;border-radius:8px;
+  padding:6px 8px;font-size:10px;color:#56645a
+}
+.price-row{
+  display:flex;justify-content:space-between;align-items:center;
+  gap:10px;margin-top:12px
+}
+.price{font-weight:800;font-size:14px}
+.add{
+  background:var(--accent);color:#fff;
+  padding:10px 13px;border-radius:11px;
+  font-weight:700;font-size:12px
+}
+.about{display:flex;flex-direction:column;gap:15px}
+.info{
+  background:#fff;border:1px solid var(--line);
+  border-radius:20px;padding:20px
+}
+.info h3{margin:0 0 8px;font-family:Georgia,serif;font-size:21px}
+.info p{font-size:13px;line-height:1.5;color:var(--muted)}
+.steps{display:flex;flex-direction:column;gap:12px}
+.step{
+  background:#fff;padding:19px;border-radius:18px;
+  border:1px solid var(--line)
+}
+.num{font-size:25px;font-weight:800;color:var(--accent)}
+footer{padding:30px 16px;background:var(--dark);color:#fff;margin-top:35px}
+.footer{display:block}
+.muted-white{opacity:.75}
+.cart{
+  position:fixed;right:14px;bottom:14px;z-index:30;
+  background:var(--dark);color:#fff;border-radius:18px;
+  padding:12px 15px;box-shadow:0 9px 26px rgba(0,0,0,.2);
+  display:none;font-size:12px
+}
+.modal-bg{
+  position:fixed;inset:0;background:rgba(20,30,24,.55);
+  display:none;align-items:flex-end;justify-content:center;
+  padding:0;z-index:40
+}
+.modal{
+  background:#fff;border-radius:22px 22px 0 0;
+  padding:22px;width:100%;max-width:430px;
+  max-height:85vh;overflow:auto
+}
+.close{float:right;background:#eef1ec;border-radius:8px;padding:7px 10px}
+.cart-item{
+  display:flex;justify-content:space-between;gap:12px;
+  padding:12px 0;border-bottom:1px solid var(--line);
+  font-size:13px
+}
+@media (min-width:431px){
+  .page{max-width:430px;margin:0 auto}
+}
 </style>
 </head>
 <body>
 <header class="hero" id="top">
-<nav class="nav"><div class="logo">VITA</div><div><a href="#menu">Меню</a><a href="#rations">Рационы</a><a href="#about">О кафе</a></div></nav>
+<nav class="nav"><div class="logo">VITA</div></nav>
 <div class="hero-content"><div class="eyebrow">Кафе здорового питания</div><h1>Питание,<br>подобранное под вас.</h1>
 <p>Сбалансированные блюда, понятный состав и возможность собрать индивидуальный рацион с учётом калорийности и БЖУ.</p>
 <a href="#menu"><button class="hero-btn">Открыть меню</button></a></div>
@@ -72,41 +206,41 @@ footer{padding:35px 0;background:var(--dark);color:white}.footer{display:flex;ju
 
 <script>
 const dishes=[
-["Завтраки","Омлет с овощами и мягким сыром","Яйца, овощи, молоко, мягкий сыр, зелень","250 г",320,20,22,10,"🍳"],
-["Завтраки","Омлет с курицей и шпинатом","Яйца, куриное филе, шпинат, мягкий сыр","250 г",330,31,20,6,"🥚"],
-["Завтраки","Овсяная каша с ягодами и орехами","Овсяные хлопья, молоко, ягоды, орехи, мёд","300 г",360,11,14,48,"🥣"],
-["Завтраки","Сырники с ягодным соусом","Творог, яйцо, рисовая мука, ягоды, йогурт","250 г",390,24,17,38,"🧀"],
-["Завтраки","Авокадо-тост с яйцом пашот","Цельнозерновой хлеб, авокадо, яйцо, томаты, зелень","220 г",350,13,21,28,"🥑"],
-["Завтраки","Гречневый боул с яйцом и овощами","Гречка, яйцо, авокадо, овощи, шпинат, семена","300 г",340,15,14,39,"🥗"],
-["Завтраки","Йогуртовый боул с гранолой","Греческий йогурт, гранола, ягоды, банан, орехи","300 г",370,18,12,47,"🍓"],
-["Салаты","Салат с курицей су-вид, авокадо и печёными овощами","Курица су-вид, авокадо, кабачок, перец, томаты, зелень","280 г",360,30,19,18,"🥗"],
-["Салаты","Салат с тунцом, яйцом и овощами","Тунец, яйцо, огурец, томаты, перец, зелень, авокадо","280 г",330,31,18,13,"🐟"],
-["Салаты","Салат с запечённой свёклой и мягким сыром","Свёкла, мягкий сыр, руккола, яблоко, грецкий орех","250 г",300,11,18,24,"🫜"],
-["Салаты","Киноа с овощами и фетой","Киноа, фета, огурец, томаты, перец, шпинат","280 г",320,11,15,37,"🥗"],
-["Салаты","Салат с индейкой и грушей","Индейка, груша, салатная зелень, огурец, фета, орех","280 г",350,29,16,25,"🍐"],
-["Салаты","Салат с лососем, авокадо и миксом зелени","Лосось, авокадо, зелень, огурец, томаты, кунжут","280 г",390,27,27,15,"🐟"],
-["Супы","Крем-суп из тыквы с кокосовым молоком","Тыква, морковь, лук, кокосовое молоко, семечки","300 г",240,5,14,24,"🎃"],
-["Супы","Крем-суп из брокколи с мягким сыром","Брокколи, картофель, лук, бульон, мягкий сыр","300 г",220,9,13,17,"🥦"],
-["Супы","Чечевичный суп с томатами","Чечевица, томаты, морковь, лук, сельдерей","300 г",250,13,7,34,"🍅"],
-["Супы","Куриный суп с овощами и зеленью","Куриное филе, картофель, морковь, кабачок, перец","300 г",210,23,8,14,"🍲"],
-["Супы","Крем-суп из цветной капусты","Цветная капуста, картофель, молоко, мягкий сыр","300 г",200,8,11,19,"🥦"],
-["Горячие блюда","Куриное филе су-вид с кремом из брокколи","Куриное филе, брокколи, картофель, мягкий сыр","300 г",390,39,17,24,"🍗"],
-["Горячие блюда","Индейка с киноа и овощами гриль","Индейка, киноа, кабачок, перец, баклажан","300 г",420,38,15,35,"🥩"],
-["Горячие блюда","Лосось с кремом из цветной капусты","Лосось, цветная капуста, картофель, мягкий сыр","280 г",450,31,28,17,"🐟"],
-["Горячие блюда","Филе белой рыбы с картофельным кремом","Судак/треска, картофель, молоко, морковь, шпинат","300 г",350,32,12,29,"🐟"],
-["Горячие блюда","Говядина с гречкой и грибами","Говядина, гречка, шампиньоны, лук, зелень","300 г",430,35,18,35,"🥩"],
-["Горячие блюда","Куриная котлета с пюре из цветной капусты","Куриное филе, цветная капуста, картофель, яйцо","300 г",370,34,17,23,"🍗"],
-["Горячие блюда","Тёплый боул с чечевицей и овощами","Чечевица, брокколи, морковь, перец, авокадо, шпинат","300 г",360,16,13,43,"🥗"],
-["Горячие блюда","Индейка с булгуром и овощным рататуем","Индейка, булгур, кабачок, баклажан, томаты, перец","300 г",400,37,14,37,"🍆"],
-["Закуски","Хумус с овощами и цельнозерновыми хлебцами","Нут, тахини, овощи, цельнозерновые хлебцы","220 г",310,10,15,34,"🫘"],
-["Закуски","Брускетта с авокадо и яйцом пашот","Цельнозерновой хлеб, авокадо, яйцо, томаты, зелень","200 г",300,12,17,27,"🥑"],
-["Закуски","Тартар из авокадо и тунца","Тунец, авокадо, огурец, томаты, красный лук","220 г",300,25,18,12,"🐟"],
-["Закуски","Рулетики из индейки с творожным сыром","Индейка, творожный сыр, огурец, перец, салат","200 г",280,29,14,8,"🥩"]
+["Завтраки","Омлет с овощами и мягким сыром","Яйца, овощи, молоко, мягкий сыр, зелень","250 г",320,20,22,10,"🍳","https://images.unsplash.com/photo-1510693206972-df098f0cbf1c?auto=format&fit=crop&w=900&q=85"],
+["Завтраки","Омлет с курицей и шпинатом","Яйца, куриное филе, шпинат, мягкий сыр","250 г",330,31,20,6,"🥚","https://images.unsplash.com/photo-1525351484163-7529414344d8?auto=format&fit=crop&w=900&q=85"],
+["Завтраки","Овсяная каша с ягодами и орехами","Овсяные хлопья, молоко, ягоды, орехи, мёд","300 г",360,11,14,48,"🥣","https://images.unsplash.com/photo-1517673400267-0251440c45dc?auto=format&fit=crop&w=900&q=85"],
+["Завтраки","Сырники с ягодным соусом","Творог, яйцо, рисовая мука, ягоды, йогурт","250 г",390,24,17,38,"🧀","https://images.unsplash.com/photo-1565299507177-b0ac66763828?auto=format&fit=crop&w=900&q=85"],
+["Завтраки","Авокадо-тост с яйцом пашот","Цельнозерновой хлеб, авокадо, яйцо, томаты, зелень","220 г",350,13,21,28,"🥑","https://images.unsplash.com/photo-1541519227354-08fa5d50c44d?auto=format&fit=crop&w=900&q=85"],
+["Завтраки","Гречневый боул с яйцом и овощами","Гречка, яйцо, авокадо, овощи, шпинат, семена","300 г",340,15,14,39,"🥗","https://images.unsplash.com/photo-1540420773420-3366772f4999?auto=format&fit=crop&w=900&q=85"],
+["Завтраки","Йогуртовый боул с гранолой","Греческий йогурт, гранола, ягоды, банан, орехи","300 г",370,18,12,47,"🍓","https://images.unsplash.com/photo-1488477181946-6428a0291777?auto=format&fit=crop&w=900&q=85"],
+["Салаты","Салат с курицей су-вид, авокадо и печёными овощами","Курица су-вид, авокадо, кабачок, перец, томаты, зелень","280 г",360,30,19,18,"🥗","https://images.unsplash.com/photo-1546793665-c74683f339c1?auto=format&fit=crop&w=900&q=85"],
+["Салаты","Салат с тунцом, яйцом и овощами","Тунец, яйцо, огурец, томаты, перец, зелень, авокадо","280 г",330,31,18,13,"🐟","https://images.unsplash.com/photo-1551248429-40975aa4de74?auto=format&fit=crop&w=900&q=85"],
+["Салаты","Салат с запечённой свёклой и мягким сыром","Свёкла, мягкий сыр, руккола, яблоко, грецкий орех","250 г",300,11,18,24,"🫜","https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=900&q=85"],
+["Салаты","Киноа с овощами и фетой","Киноа, фета, огурец, томаты, перец, шпинат","280 г",320,11,15,37,"🥗","https://images.unsplash.com/photo-1540420773420-3366772f4999?auto=format&fit=crop&w=900&q=85"],
+["Салаты","Салат с индейкой и грушей","Индейка, груша, салатная зелень, огурец, фета, орех","280 г",350,29,16,25,"🍐","https://images.unsplash.com/photo-1546793665-c74683f339c1?auto=format&fit=crop&w=900&q=85"],
+["Салаты","Салат с лососем, авокадо и миксом зелени","Лосось, авокадо, зелень, огурец, томаты, кунжут","280 г",390,27,27,15,"🐟","https://images.unsplash.com/photo-1467003909585-2f8a72700288?auto=format&fit=crop&w=900&q=85"],
+["Супы","Крем-суп из тыквы с кокосовым молоком","Тыква, морковь, лук, кокосовое молоко, семечки","300 г",240,5,14,24,"🎃","https://images.unsplash.com/photo-1476718406336-bb5a9690ee2?auto=format&fit=crop&w=900&q=85"],
+["Супы","Крем-суп из брокколи с мягким сыром","Брокколи, картофель, лук, бульон, мягкий сыр","300 г",220,9,13,17,"🥦","https://images.unsplash.com/photo-1603105037880-880cd4edfb0d?auto=format&fit=crop&w=900&q=85"],
+["Супы","Чечевичный суп с томатами","Чечевица, томаты, морковь, лук, сельдерей","300 г",250,13,7,34,"🍅","https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=900&q=85"],
+["Супы","Куриный суп с овощами и зеленью","Куриное филе, картофель, морковь, кабачок, перец","300 г",210,23,8,14,"🍲","https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=900&q=85"],
+["Супы","Крем-суп из цветной капусты","Цветная капуста, картофель, молоко, мягкий сыр","300 г",200,8,11,19,"🥦","https://images.unsplash.com/photo-1547592166-23ac45744acd?auto=format&fit=crop&w=900&q=85"],
+["Горячие блюда","Куриное филе су-вид с кремом из брокколи","Куриное филе, брокколи, картофель, мягкий сыр","300 г",390,39,17,24,"🍗","https://images.unsplash.com/photo-1532550907401-a500c9a57435?auto=format&fit=crop&w=900&q=85"],
+["Горячие блюда","Индейка с киноа и овощами гриль","Индейка, киноа, кабачок, перец, баклажан","300 г",420,38,15,35,"🥩","https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=900&q=85"],
+["Горячие блюда","Лосось с кремом из цветной капусты","Лосось, цветная капуста, картофель, мягкий сыр","280 г",450,31,28,17,"🐟","https://images.unsplash.com/photo-1467003909585-2f8a72700288?auto=format&fit=crop&w=900&q=85"],
+["Горячие блюда","Филе белой рыбы с картофельным кремом","Судак/треска, картофель, молоко, морковь, шпинат","300 г",350,32,12,29,"🐟","https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?auto=format&fit=crop&w=900&q=85"],
+["Горячие блюда","Говядина с гречкой и грибами","Говядина, гречка, шампиньоны, лук, зелень","300 г",430,35,18,35,"🥩","https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=900&q=85"],
+["Горячие блюда","Куриная котлета с пюре из цветной капусты","Куриное филе, цветная капуста, картофель, яйцо","300 г",370,34,17,23,"🍗","https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?auto=format&fit=crop&w=900&q=85"],
+["Горячие блюда","Тёплый боул с чечевицей и овощами","Чечевица, брокколи, морковь, перец, авокадо, шпинат","300 г",360,16,13,43,"🥗","https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=900&q=85"],
+["Горячие блюда","Индейка с булгуром и овощным рататуем","Индейка, булгур, кабачок, баклажан, томаты, перец","300 г",400,37,14,37,"🍆","https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=900&q=85"],
+["Закуски","Хумус с овощами и цельнозерновыми хлебцами","Нут, тахини, овощи, цельнозерновые хлебцы","220 г",310,10,15,34,"🫘","https://images.unsplash.com/photo-1577805947697-89e18249d767?auto=format&fit=crop&w=900&q=85"],
+["Закуски","Брускетта с авокадо и яйцом пашот","Цельнозерновой хлеб, авокадо, яйцо, томаты, зелень","200 г",300,12,17,27,"🥑","https://images.unsplash.com/photo-1541519227354-08fa5d50c44d?auto=format&fit=crop&w=900&q=85"],
+["Закуски","Тартар из авокадо и тунца","Тунец, авокадо, огурец, томаты, красный лук","220 г",300,25,18,12,"🐟","https://images.unsplash.com/photo-1551248429-40975aa4de74?auto=format&fit=crop&w=900&q=85"],
+["Закуски","Рулетики из индейки с творожным сыром","Индейка, творожный сыр, огурец, перец, салат","200 г",280,29,14,8,"🥩","https://images.unsplash.com/photo-1532550907401-a500c9a57435?auto=format&fit=crop&w=900&q=85"]
 ];
 const cats=["Все","Завтраки","Салаты","Супы","Горячие блюда","Закуски"];let active="Все", cart=[];
 function renderTabs(){document.getElementById("tabs").innerHTML=cats.map(c=>`<button class="tab ${c==active?'active':''}" onclick="filterCat('${c}')">${c}</button>`).join("")}
 function filterCat(c){active=c;renderTabs();render()}
-function render(){let arr=active=="Все"?dishes:dishes.filter(x=>x[0]==active);document.getElementById("menuGrid").innerHTML=arr.map((d)=>`<article class="card"><div class="photo">${d[8]}</div><div class="card-body"><h3>${d[1]}</h3><div class="desc">${d[2]}</div><div class="kbju"><span class="tag">${d[3]}</span><span class="tag">${d[4]} ккал</span><span class="tag">Б ${d[5]}</span><span class="tag">Ж ${d[6]}</span><span class="tag">У ${d[7]}</span></div><div class="price-row"><span class="price">${d[4]} ккал</span><button class="add" onclick="add('${d[1]}',${d[4]})">Добавить</button></div></div></article>`).join("")}
+function render(){let arr=active=="Все"?dishes:dishes.filter(x=>x[0]==active);document.getElementById("menuGrid").innerHTML=arr.map((d)=>`<article class="card"><div class="photo" style="background-image:linear-gradient(rgba(25,38,29,.08),rgba(25,38,29,.08)),url('${d[9]||""}');background-size:cover;background-position:center">${d[9]?"":"🍽️"}</div><div class="card-body"><h3>${d[1]}</h3><div class="desc">${d[2]}</div><div class="kbju"><span class="tag">${d[3]}</span><span class="tag">${d[4]} ккал</span><span class="tag">Б ${d[5]}</span><span class="tag">Ж ${d[6]}</span><span class="tag">У ${d[7]}</span></div><div class="price-row"><span class="price">${d[4]} ккал</span><button class="add" onclick="add('${d[1]}',${d[4]})">Добавить</button></div></div></article>`).join("")}
 function add(name,cal){cart.push({name,cal});document.getElementById("count").textContent=cart.length;document.getElementById("cart").style.display="block"}
 function openCart(){document.getElementById("modal").style.display="flex";document.getElementById("cartList").innerHTML=cart.length?cart.map((x,i)=>`<div class="cart-item"><span>${x.name}</span><b>${x.cal} ккал</b></div>`).join(""):"<p class='subtitle'>Корзина пока пуста.</p>";document.getElementById("total").textContent=cart.length?"Итого: "+cart.reduce((a,x)=>a+x.cal,0)+" ккал":""}
 function closeCart(){document.getElementById("modal").style.display="none"}
