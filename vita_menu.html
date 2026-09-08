@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VITA — кафе здорового питания</title>
+<style>
+:root{
+  --bg:#f5f7f1; --card:#fff; --text:#26342b; --muted:#718078;
+  --accent:#718b68; --accent2:#dce8d5; --line:#e3e8df; --dark:#314338;
+}
+*{box-sizing:border-box} body{margin:0;font-family:Inter,Arial,sans-serif;background:var(--bg);color:var(--text)}
+button{font:inherit;cursor:pointer;border:0}.hero{min-height:430px;padding:28px 6%;display:flex;align-items:center;
+background:linear-gradient(110deg,rgba(38,52,43,.9),rgba(70,91,72,.62)),linear-gradient(135deg,#aabca1,#e6eadf);color:white}
+.nav{position:absolute;top:22px;left:6%;right:6%;display:flex;justify-content:space-between;align-items:center}
+.logo{font-size:25px;font-weight:800;letter-spacing:3px}.nav a{color:white;text-decoration:none;margin-left:25px;font-size:14px}
+.hero-content{max-width:720px;margin-top:45px}.eyebrow{text-transform:uppercase;letter-spacing:3px;font-size:12px;opacity:.8}
+h1{font-size:clamp(42px,7vw,72px);line-height:.98;margin:16px 0}.hero p{font-size:18px;line-height:1.6;max-width:600px;color:#eef3ec}
+.hero-btn{background:white;color:var(--dark);padding:14px 22px;border-radius:12px;font-weight:700}
+.container{width:min(1180px,90%);margin:auto}.section{padding:58px 0}.section-head{display:flex;justify-content:space-between;gap:20px;align-items:end;margin-bottom:25px}
+h2{font-size:34px;margin:0 0 8px}.subtitle{color:var(--muted);margin:0;line-height:1.5}
+.tabs{display:flex;flex-wrap:wrap;gap:9px;margin:25px 0}.tab{padding:11px 17px;border-radius:999px;background:white;border:1px solid var(--line);color:var(--text)}
+.tab.active{background:var(--dark);color:white;border-color:var(--dark)}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.card{background:var(--card);border:1px solid var(--line);border-radius:20px;overflow:hidden;box-shadow:0 8px 25px rgba(40,55,44,.05)}
+.photo{height:170px;background:linear-gradient(135deg,#d9e5d1,#9caf94);display:flex;align-items:center;justify-content:center;font-size:55px}
+.card-body{padding:18px}.card h3{margin:0 0 9px;font-size:19px}.desc{font-size:13px;color:var(--muted);min-height:39px;line-height:1.45}.kbju{display:flex;gap:7px;flex-wrap:wrap;margin:13px 0}.tag{background:#f0f4ed;border-radius:8px;padding:6px 8px;font-size:11px}.price-row{display:flex;justify-content:space-between;align-items:center;margin-top:12px}.price{font-weight:800}.add{background:var(--accent);color:white;padding:9px 13px;border-radius:10px}.about{display:grid;grid-template-columns:1fr 1fr;gap:25px}.info{background:white;border:1px solid var(--line);border-radius:22px;padding:28px}.info h3{margin-top:0}.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}.step{background:white;padding:22px;border-radius:18px;border:1px solid var(--line)}.num{font-size:28px;font-weight:800;color:var(--accent)}
+footer{padding:35px 0;background:var(--dark);color:white}.footer{display:flex;justify-content:space-between;gap:20px}.muted-white{opacity:.75}
+.cart{position:fixed;right:22px;bottom:22px;background:var(--dark);color:white;border-radius:18px;padding:14px 18px;box-shadow:0 10px 30px rgba(0,0,0,.2);display:none}
+.modal-bg{position:fixed;inset:0;background:rgba(20,30,24,.55);display:none;align-items:center;justify-content:center;padding:20px}.modal{background:white;border-radius:22px;padding:26px;width:min(520px,100%);max-height:85vh;overflow:auto}.close{float:right;background:#eef1ec;border-radius:8px;padding:6px 10px}.cart-item{display:flex;justify-content:space-between;padding:12px 0;border-bottom:1px solid var(--line)}
+@media(max-width:850px){.grid{grid-template-columns:repeat(2,1fr)}.about,.steps{grid-template-columns:1fr}.nav a{display:none}}
+@media(max-width:560px){.grid{grid-template-columns:1fr}.hero{min-height:500px}.section{padding:42px 0}.section-head{display:block}.tabs{overflow:auto;flex-wrap:nowrap}.tab{white-space:nowrap}}
+</style>
+</head>
+<body>
+<header class="hero" id="top">
+<nav class="nav"><div class="logo">VITA</div><div><a href="#menu">Меню</a><a href="#rations">Рационы</a><a href="#about">О кафе</a></div></nav>
+<div class="hero-content"><div class="eyebrow">Кафе здорового питания</div><h1>Питание,<br>подобранное под вас.</h1>
+<p>Сбалансированные блюда, понятный состав и возможность собрать индивидуальный рацион с учётом калорийности и БЖУ.</p>
+<a href="#menu"><button class="hero-btn">Открыть меню</button></a></div>
+</header>
+
+<main>
+<section class="section" id="menu"><div class="container">
+<div class="section-head"><div><h2>Меню</h2><p class="subtitle">30 блюд для завтрака, обеда и лёгкого перекуса.</p></div></div>
+<div class="tabs" id="tabs"></div><div class="grid" id="menuGrid"></div>
+</div></section>
+
+<section class="section" id="rations"><div class="container">
+<div class="section-head"><div><h2>Индивидуальный рацион</h2><p class="subtitle">Выберите калорийность — и мы подберём сочетание блюд.</p></div></div>
+<div class="about">
+<div class="info"><h3>Подбор рациона</h3>
+<p>Укажите желаемую калорийность:</p>
+<div class="tabs"><button class="tab active" onclick="setCal(1200,this)">1200 ккал</button><button class="tab" onclick="setCal(1500,this)">1500 ккал</button><button class="tab" onclick="setCal(1800,this)">1800 ккал</button><button class="tab" onclick="setCal(2000,this)">2000 ккал</button></div>
+<div id="rationResult"><b>Пример рациона на 1200 ккал</b><p class="subtitle">Завтрак + салат + суп + горячее + закуска. Итоговая комбинация может корректироваться специалистом.</p></div>
+</div>
+<div class="info"><h3>Консультация диетолога</h3><p>Специалист поможет выбрать блюда с учётом ваших пищевых предпочтений, образа жизни и цели питания.</p><button class="add" onclick="alert('Форма консультации может быть подключена к вашему сервису записи.')">Получить консультацию</button><hr style="border:0;border-top:1px solid #e3e8df;margin:24px 0"><h3>Доставка</h3><p>Выберите рацион дистанционно и оформите доставку выбранных блюд.</p></div>
+</div>
+</div></section>
+
+<section class="section" id="about"><div class="container">
+<div class="section-head"><div><h2>Как это работает</h2><p class="subtitle">Современный формат обслуживания в кафе.</p></div></div>
+<div class="steps"><div class="step"><div class="num">01</div><h3>Выберите</h3><p>Изучите меню и пищевую ценность блюд на планшете за столом.</p></div>
+<div class="step"><div class="num">02</div><h3>Соберите</h3><p>Добавьте подходящие позиции или обратитесь за помощью к персоналу.</p></div>
+<div class="step"><div class="num">03</div><h3>Получите</h3><p>Оформите заказ в кафе или выберите доставку готового рациона.</p></div></div>
+</div></section>
+</main>
+
+<footer><div class="container footer"><div><b>VITA</b><div class="muted-white">Кафе здорового питания</div></div><div class="muted-white">Индивидуальный подход • Качество • Баланс</div></div></footer>
+
+<div class="cart" id="cart" onclick="openCart()">🛒 Заказ: <span id="count">0</span></div>
+<div class="modal-bg" id="modal"><div class="modal"><button class="close" onclick="closeCart()">✕</button><h2>Ваш заказ</h2><div id="cartList"></div><h3 id="total"></h3><button class="add" style="width:100%" onclick="alert('Демонстрационная версия: здесь можно подключить оформление заказа.')">Оформить заказ</button></div></div>
+
+<script>
+const dishes=[
+["Завтраки","Омлет с овощами и мягким сыром","Яйца, овощи, молоко, мягкий сыр, зелень","250 г",320,20,22,10,"🍳"],
+["Завтраки","Омлет с курицей и шпинатом","Яйца, куриное филе, шпинат, мягкий сыр","250 г",330,31,20,6,"🥚"],
+["Завтраки","Овсяная каша с ягодами и орехами","Овсяные хлопья, молоко, ягоды, орехи, мёд","300 г",360,11,14,48,"🥣"],
+["Завтраки","Сырники с ягодным соусом","Творог, яйцо, рисовая мука, ягоды, йогурт","250 г",390,24,17,38,"🧀"],
+["Завтраки","Авокадо-тост с яйцом пашот","Цельнозерновой хлеб, авокадо, яйцо, томаты, зелень","220 г",350,13,21,28,"🥑"],
+["Завтраки","Гречневый боул с яйцом и овощами","Гречка, яйцо, авокадо, овощи, шпинат, семена","300 г",340,15,14,39,"🥗"],
+["Завтраки","Йогуртовый боул с гранолой","Греческий йогурт, гранола, ягоды, банан, орехи","300 г",370,18,12,47,"🍓"],
+["Салаты","Салат с курицей су-вид, авокадо и печёными овощами","Курица су-вид, авокадо, кабачок, перец, томаты, зелень","280 г",360,30,19,18,"🥗"],
+["Салаты","Салат с тунцом, яйцом и овощами","Тунец, яйцо, огурец, томаты, перец, зелень, авокадо","280 г",330,31,18,13,"🐟"],
+["Салаты","Салат с запечённой свёклой и мягким сыром","Свёкла, мягкий сыр, руккола, яблоко, грецкий орех","250 г",300,11,18,24,"🫜"],
+["Салаты","Киноа с овощами и фетой","Киноа, фета, огурец, томаты, перец, шпинат","280 г",320,11,15,37,"🥗"],
+["Салаты","Салат с индейкой и грушей","Индейка, груша, салатная зелень, огурец, фета, орех","280 г",350,29,16,25,"🍐"],
+["Салаты","Салат с лососем, авокадо и миксом зелени","Лосось, авокадо, зелень, огурец, томаты, кунжут","280 г",390,27,27,15,"🐟"],
+["Супы","Крем-суп из тыквы с кокосовым молоком","Тыква, морковь, лук, кокосовое молоко, семечки","300 г",240,5,14,24,"🎃"],
+["Супы","Крем-суп из брокколи с мягким сыром","Брокколи, картофель, лук, бульон, мягкий сыр","300 г",220,9,13,17,"🥦"],
+["Супы","Чечевичный суп с томатами","Чечевица, томаты, морковь, лук, сельдерей","300 г",250,13,7,34,"🍅"],
+["Супы","Куриный суп с овощами и зеленью","Куриное филе, картофель, морковь, кабачок, перец","300 г",210,23,8,14,"🍲"],
+["Супы","Крем-суп из цветной капусты","Цветная капуста, картофель, молоко, мягкий сыр","300 г",200,8,11,19,"🥦"],
+["Горячие блюда","Куриное филе су-вид с кремом из брокколи","Куриное филе, брокколи, картофель, мягкий сыр","300 г",390,39,17,24,"🍗"],
+["Горячие блюда","Индейка с киноа и овощами гриль","Индейка, киноа, кабачок, перец, баклажан","300 г",420,38,15,35,"🥩"],
+["Горячие блюда","Лосось с кремом из цветной капусты","Лосось, цветная капуста, картофель, мягкий сыр","280 г",450,31,28,17,"🐟"],
+["Горячие блюда","Филе белой рыбы с картофельным кремом","Судак/треска, картофель, молоко, морковь, шпинат","300 г",350,32,12,29,"🐟"],
+["Горячие блюда","Говядина с гречкой и грибами","Говядина, гречка, шампиньоны, лук, зелень","300 г",430,35,18,35,"🥩"],
+["Горячие блюда","Куриная котлета с пюре из цветной капусты","Куриное филе, цветная капуста, картофель, яйцо","300 г",370,34,17,23,"🍗"],
+["Горячие блюда","Тёплый боул с чечевицей и овощами","Чечевица, брокколи, морковь, перец, авокадо, шпинат","300 г",360,16,13,43,"🥗"],
+["Горячие блюда","Индейка с булгуром и овощным рататуем","Индейка, булгур, кабачок, баклажан, томаты, перец","300 г",400,37,14,37,"🍆"],
+["Закуски","Хумус с овощами и цельнозерновыми хлебцами","Нут, тахини, овощи, цельнозерновые хлебцы","220 г",310,10,15,34,"🫘"],
+["Закуски","Брускетта с авокадо и яйцом пашот","Цельнозерновой хлеб, авокадо, яйцо, томаты, зелень","200 г",300,12,17,27,"🥑"],
+["Закуски","Тартар из авокадо и тунца","Тунец, авокадо, огурец, томаты, красный лук","220 г",300,25,18,12,"🐟"],
+["Закуски","Рулетики из индейки с творожным сыром","Индейка, творожный сыр, огурец, перец, салат","200 г",280,29,14,8,"🥩"]
+];
+const cats=["Все","Завтраки","Салаты","Супы","Горячие блюда","Закуски"];let active="Все", cart=[];
+function renderTabs(){document.getElementById("tabs").innerHTML=cats.map(c=>`<button class="tab ${c==active?'active':''}" onclick="filterCat('${c}')">${c}</button>`).join("")}
+function filterCat(c){active=c;renderTabs();render()}
+function render(){let arr=active=="Все"?dishes:dishes.filter(x=>x[0]==active);document.getElementById("menuGrid").innerHTML=arr.map((d)=>`<article class="card"><div class="photo">${d[8]}</div><div class="card-body"><h3>${d[1]}</h3><div class="desc">${d[2]}</div><div class="kbju"><span class="tag">${d[3]}</span><span class="tag">${d[4]} ккал</span><span class="tag">Б ${d[5]}</span><span class="tag">Ж ${d[6]}</span><span class="tag">У ${d[7]}</span></div><div class="price-row"><span class="price">${d[4]} ккал</span><button class="add" onclick="add('${d[1]}',${d[4]})">Добавить</button></div></div></article>`).join("")}
+function add(name,cal){cart.push({name,cal});document.getElementById("count").textContent=cart.length;document.getElementById("cart").style.display="block"}
+function openCart(){document.getElementById("modal").style.display="flex";document.getElementById("cartList").innerHTML=cart.length?cart.map((x,i)=>`<div class="cart-item"><span>${x.name}</span><b>${x.cal} ккал</b></div>`).join(""):"<p class='subtitle'>Корзина пока пуста.</p>";document.getElementById("total").textContent=cart.length?"Итого: "+cart.reduce((a,x)=>a+x.cal,0)+" ккал":""}
+function closeCart(){document.getElementById("modal").style.display="none"}
+function setCal(cal,el){document.querySelectorAll("#rations .tab").forEach(x=>x.classList.remove("active"));el.classList.add("active");document.getElementById("rationResult").innerHTML=`<b>Пример рациона на ${cal} ккал</b><p class="subtitle">Подбор блюд на ${cal} ккал выполняется из меню с учётом КБЖУ. Для реального заказа итоговый состав должен подтверждаться специалистом.</p>`}
+renderTabs();render();
+</script>
+</body></html>
